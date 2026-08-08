@@ -20,6 +20,24 @@ const certs = computed(() => signature.value.meta.certs.map((certificate, index)
   certificateName: `Certificate ${index + 1}`,
 })),
 );
+
+type Certificate = SignatureInfo['meta']['certs'][number];
+
+function asValidityPeriod(value: unknown): Certificate['validityPeriod'] {
+  return value as Certificate['validityPeriod'];
+}
+
+function asIssuedBy(value: unknown): Certificate['issuedBy'] {
+  return value as Certificate['issuedBy'];
+}
+
+function asIssuedTo(value: unknown): Certificate['issuedTo'] {
+  return value as Certificate['issuedTo'];
+}
+
+function asPemCertificate(value: unknown): string {
+  return value as string;
+}
 </script>
 
 <template>
@@ -29,10 +47,10 @@ const certs = computed(() => signature.value.meta.certs.map((certificate, index)
         <c-key-value-list
           :items="[{
             label: 'Not before',
-            value: value.notBefore,
+            value: asValidityPeriod(value).notBefore,
           }, {
             label: 'Not after',
-            value: value.notAfter,
+            value: asValidityPeriod(value).notAfter,
           }]"
         />
       </template>
@@ -41,22 +59,22 @@ const certs = computed(() => signature.value.meta.certs.map((certificate, index)
         <c-key-value-list
           :items="[{
             label: 'Common name',
-            value: value.commonName,
+            value: asIssuedBy(value).commonName,
           }, {
             label: 'Organization name',
-            value: value.organizationName,
+            value: asIssuedBy(value).organizationName,
           }, {
             label: 'Country name',
-            value: value.countryName,
+            value: asIssuedBy(value).countryName,
           }, {
             label: 'Locality name',
-            value: value.localityName,
+            value: asIssuedBy(value).localityName,
           }, {
             label: 'Organizational unit name',
-            value: value.organizationalUnitName,
+            value: asIssuedBy(value).organizationalUnitName,
           }, {
             label: 'State or province name',
-            value: value.stateOrProvinceName,
+            value: asIssuedBy(value).stateOrProvinceName,
           }]"
         />
       </template>
@@ -65,31 +83,31 @@ const certs = computed(() => signature.value.meta.certs.map((certificate, index)
         <c-key-value-list
           :items="[{
             label: 'Common name',
-            value: value.commonName,
+            value: asIssuedTo(value).commonName,
           }, {
             label: 'Organization name',
-            value: value.organizationName,
+            value: asIssuedTo(value).organizationName,
           }, {
             label: 'Country name',
-            value: value.countryName,
+            value: asIssuedTo(value).countryName,
           }, {
             label: 'Locality name',
-            value: value.localityName,
+            value: asIssuedTo(value).localityName,
           }, {
             label: 'Organizational unit name',
-            value: value.organizationalUnitName,
+            value: asIssuedTo(value).organizationalUnitName,
           }, {
             label: 'State or province name',
-            value: value.stateOrProvinceName,
+            value: asIssuedTo(value).stateOrProvinceName,
           }]"
         />
       </template>
 
       <template #pemCertificate="{ value }">
-        <c-modal-value :value="value" label="View PEM cert">
+        <c-modal-value :value="asPemCertificate(value)" label="View PEM cert">
           <template #value>
             <div break-all text-xs>
-              {{ value }}
+              {{ asPemCertificate(value) }}
             </div>
           </template>
         </c-modal-value>

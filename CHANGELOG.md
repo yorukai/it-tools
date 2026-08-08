@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## Version 2026.08.08-4013e8b
+
+### Chores
+- **deps**: update all dependencies to patch security vulnerabilities - Updated all dependencies to latest patch versions - TypeScript updated to 5.4 for Vue 3.5.41 compatibility (NoInfer support) - Reduced vulnerabilities from 174 to 24 (86% reduction) - Verified build, typecheck, and lint still work Notable updates: - typescript: ~5.2.2 → ~5.4 - vite: 4.4.9 → 4.5.14 - prettier: 3.0.0 → 3.9.6 - less: 4.1.3 → 4.8.1 - eslint: 8.47.0 → 8.57.1 - dompurify: 3.0.6 → 3.4.13 - @tiptap/pm: 2.1.6 → 2.7.4 (4013e8b)
+
 ## Version 2024.10.22-7ca5933
 
 ### Features

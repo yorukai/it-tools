@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { generateMeta } from '@it-tools/oggen';
 import _ from 'lodash';
+import type { SelectGroupOption, SelectOption } from 'naive-ui';
 import { image, ogSchemas, twitter, website } from './og-schemas';
 import type { OGSchemaType, OGSchemaTypeElementSelect } from './OGSchemaType.type';
+import type { CSelectOption } from '@/ui/c-select/c-select.types';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 
 // Since type guards do not work in template
@@ -48,6 +50,20 @@ const metaTags = computed(() => {
 
   return generateMeta({ ...otherMeta, twitter: twitterMeta }, { generateTwitterCompatibleMeta: true });
 });
+
+function getSelectOptions(options: Array<SelectOption | SelectGroupOption>): CSelectOption<string>[] {
+  return options.flatMap((option) => {
+    if (isSelectGroupOption(option)) {
+      return option.children.map(child => ({ label: String(child.label), value: String(child.value) }));
+    }
+
+    return { label: String(option.label), value: String(option.value) };
+  });
+}
+
+function isSelectGroupOption(option: SelectOption | SelectGroupOption): option is SelectGroupOption & { children: SelectOption[] } {
+  return Array.isArray((option as SelectGroupOption).children);
+}
 </script>
 
 <template>
@@ -77,7 +93,7 @@ const metaTags = computed(() => {
           v-model:value="metadata[key]"
           w-full
           :placeholder="placeholder"
-          :options="(element as OGSchemaTypeElementSelect).options"
+          :options="getSelectOptions((element as OGSchemaTypeElementSelect).options)"
         />
       </n-input-group>
     </div>

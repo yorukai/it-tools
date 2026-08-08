@@ -8,7 +8,7 @@ import { useFuzzySearch } from '@/composable/fuzzySearch';
 
 const props = withDefaults(
   defineProps<{
-    options?: CSelectOption<T>[] | string[]
+    options?: readonly CSelectOption<T>[] | readonly string[]
     value?: T
     placeholder?: string
     size?: 'small' | 'medium' | 'large'

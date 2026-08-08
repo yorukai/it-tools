@@ -9,6 +9,7 @@ const optionsBig = Array.from({ length: 1000 }, (_, i) => ({ label: `Option ${i}
 
 const sizes = ['small', 'medium', 'large'] as const;
 const value = ref('');
+const valueBig = ref(0);
 </script>
 
 <template>
@@ -19,7 +20,7 @@ const value = ref('');
   <c-select v-for="size in sizes" :key="size" v-model:value="value" :options="optionsA" :size="size" searchable mb-2 />
 
   <h2>Big list</h2>
-  <c-select v-model:value="value" :options="optionsBig" searchable />
+  <c-select v-model:value="valueBig" :options="optionsBig" searchable />
 
   <h2>Empty</h2>
   <c-select :options="[]" />
