@@ -18,16 +18,10 @@ You have an idea of a tool? Submit a [feature request](https://github.com/Corent
 
 Self host solutions for your homelab
 
-**From docker hub:**
+**From GitHub Container Registry (GHCR):**
 
 ```sh
-docker run -d --name it-tools --restart unless-stopped -p 8080:80 corentinth/it-tools:latest
-```
-
-**From github packages:**
-
-```sh
-docker run -d --name it-tools --restart unless-stopped -p 8080:80 ghcr.io/corentinth/it-tools:latest
+docker run -d --name it-tools --restart unless-stopped -p 8080:80 ghcr.io/yorukai/it-tools:latest
 ```
 
 **Other solutions:**
