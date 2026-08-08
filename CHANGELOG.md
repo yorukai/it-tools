@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## Version 2026.08.08-36e9614
+
+### Bug fixes
+- **dockerfile**: fixed dockerfile build (36e9614)
+
 ## Version 2026.08.08-4327d67
 
 ### Bug fixes
