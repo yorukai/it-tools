@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## Version 2026.10.19-a976b04
+
+### Build system
+- **docker**: use nginx hardened image (a976b04)
+
 ## Version 2026.08.08-36e9614
 
 ### Bug fixes
