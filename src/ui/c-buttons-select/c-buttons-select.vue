@@ -10,7 +10,7 @@ const props = withDefaults(
     size?: 'small' | 'medium' | 'large'
   } & CLabelProps >(),
   {
-    options: () => [],
+    options: () => ([] as string[]),
     value: undefined,
     labelPosition: 'left',
     size: 'medium',

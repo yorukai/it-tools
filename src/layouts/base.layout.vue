@@ -20,7 +20,7 @@ const styleStore = useStyleStore();
 const version = config.app.version;
 const commitSha = config.app.lastCommitSha.slice(0, 7);
 
-const { tracker } = useTracker();
+useTracker();
 const { t } = useI18n();
 
 const toolStore = useToolStore();
